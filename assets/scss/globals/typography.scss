@@ -1,0 +1,79 @@
+@use '../util' as *;
+
+$fonts_dir : '/assets/fonts/static/';
+
+@font-face {
+    font-family: InterX;
+    src: url($fonts_dir + "Inter-Bold.ttf") format("ttf"),
+        url($fonts_dir + "Inter-ExtraBold.ttf") format("ttf"),
+        url($fonts_dir + "Inter-Regular.ttf") format("ttf");
+}
+
+:root {
+    --fs-base: 1rem;
+    --fs-scale-ratio: .8; // change this in media queries, based on the viewport size
+
+    --fs-xxlg: calc(var(--fs-base) * var(--fs-scale-ratio) * 3.375); //54px
+    --fs-xlg: calc(var(--fs-base) * var(--fs-scale-ratio) * 2.25); //36px
+    --fs-lg: calc(var(--fs-base) * var(--fs-scale-ratio) * 2.25); //24px
+    --fs-md: calc(var(--fs-base) * var(--fs-scale-ratio) * 1.1875); //19px
+    --fs-sm: calc(var(--fs-base) * var(--fs-scale-ratio) * 1); //16px
+    --fs-xs: calc(var(--fs-base) * var(--fs-scale-ratio) * 0.9375); //15px
+}
+
+@include breakpoint(small) {
+    :root {
+        --fs-scale-ratio: .85;
+    }
+}
+
+
+@include breakpoint(medium) {
+    :root {
+        --fs-scale-ratio: .9;
+    }
+}
+
+@include breakpoint(large) {
+    :root {
+        --fs-scale-ratio: 1;
+    }
+}
+
+@include breakpoint(xxlarge) {
+    :root {
+        --fs-scale-ratio: 1.1;
+    }
+}
+
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: rem(15);
+    color: var(--grayish-blue);
+}   
+
+p {
+    line-height: 1.8;
+}
+
+h1 {
+    font-size: var(--fs-xxlg);
+    font-weight: 900;
+    line-height: 1.3;
+}
+
+h2 {
+    font-size: var(--fs-xlg);
+    font-weight: 700;
+}
+
+// h3, h4, body have static font sizes
+h3 {
+    font-size: rem(16);
+}
+
+h4 {
+    font-size: rem(15);
+}
